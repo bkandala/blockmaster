@@ -1,0 +1,172 @@
+/* quick-links-hero: photo with an overlapping card of pill-shaped quick links */
+
+.quick-links-hero {
+  --qlh-title-color: #003b71;
+  --qlh-chip-color: #003b71;
+  --qlh-chip-bg: #f0f7fa;
+  --qlh-chip-border: #0078b3;
+  --qlh-chip-hover-bg: #dcecf4;
+  --qlh-card-bg: var(--background-color);
+  --qlh-card-border: rgb(0 0 0 / 10%);
+  --qlh-card-shadow: 0 4px 20px rgb(0 0 0 / 4%);
+  --qlh-radius: 4px;
+  --qlh-overlap: 80px;
+
+  position: relative;
+  display: grid;
+}
+
+/* media: full-bleed on phones (cancels the section's 24px gutter) */
+.quick-links-hero .quick-links-hero-media {
+  margin-inline: -24px;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.quick-links-hero .quick-links-hero-media picture,
+.quick-links-hero .quick-links-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.quick-links-hero .quick-links-hero-media img {
+  object-fit: cover;
+}
+
+/* card */
+.quick-links-hero .quick-links-hero-card {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  margin: calc(-1 * var(--qlh-overlap)) -8px 0;
+  padding: 16px 12px 24px 16px;
+  border: 1px solid var(--qlh-card-border);
+  border-radius: var(--qlh-radius);
+  background-color: var(--qlh-card-bg);
+  box-shadow: var(--qlh-card-shadow);
+  overflow-wrap: break-word;
+}
+
+.quick-links-hero.no-media .quick-links-hero-card {
+  margin: 0;
+}
+
+.quick-links-hero .quick-links-hero-card > :first-child {
+  margin-top: 0;
+}
+
+.quick-links-hero .quick-links-hero-card > :last-child {
+  margin-bottom: 0;
+}
+
+/* Heading 1/2 = a big title; Heading 3-6 = the small navy label ("Today's suggestions:") */
+.quick-links-hero .quick-links-hero-card :is(h1, h2) {
+  margin-bottom: 16px;
+  font-size: var(--heading-font-size-l);
+}
+
+.quick-links-hero .quick-links-hero-card :is(h3, h4, h5, h6) {
+  margin-bottom: 16px;
+  color: var(--qlh-title-color);
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.quick-links-hero .quick-links-hero-card p {
+  font-size: var(--body-font-size-s);
+}
+
+/* chips */
+.quick-links-hero .quick-links-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quick-links-hero .quick-links-hero-links li {
+  max-width: 100%;
+}
+
+.quick-links-hero a.quick-links-hero-link:any-link {
+  display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 11px 15px;
+  border: 1px solid var(--qlh-chip-border);
+  border-radius: 100px;
+  background-color: var(--qlh-chip-bg);
+  color: var(--qlh-chip-color);
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.quick-links-hero a.quick-links-hero-link:hover,
+.quick-links-hero a.quick-links-hero-link:focus-visible {
+  background-color: var(--qlh-chip-hover-bg);
+  text-decoration: underline;
+}
+
+.quick-links-hero a.quick-links-hero-link:focus-visible {
+  outline: 2px solid var(--qlh-chip-border);
+  outline-offset: 2px;
+}
+
+@media (width >= 600px) {
+  .quick-links-hero .quick-links-hero-media {
+    margin-inline: 0;
+    border-radius: var(--qlh-radius);
+  }
+
+  .quick-links-hero .quick-links-hero-card {
+    margin-inline: 24px;
+    padding: 24px 24px 24px 32px;
+  }
+
+  .quick-links-hero.no-media .quick-links-hero-card {
+    margin-inline: 0;
+  }
+}
+
+/* desktop: photo spans ~5/6 of the row, card overlaps its far edge, centred vertically */
+@media (width >= 900px) {
+  .quick-links-hero {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: center;
+  }
+
+  .quick-links-hero .quick-links-hero-media {
+    grid-area: 1 / 1 / 2 / 11;
+  }
+
+  .quick-links-hero .quick-links-hero-card {
+    grid-area: 1 / 8 / 2 / 13;
+    margin: 0;
+    padding: 32px 20px 24px 32px;
+  }
+
+  .quick-links-hero.image-right .quick-links-hero-media {
+    grid-area: 1 / 3 / 2 / 13;
+  }
+
+  .quick-links-hero.image-right .quick-links-hero-card {
+    grid-area: 1 / 1 / 2 / 6;
+  }
+
+  .quick-links-hero.no-media .quick-links-hero-card {
+    grid-column: 1 / 13;
+  }
+}
+
+@media (width >= 1200px) {
+  .quick-links-hero .quick-links-hero-card {
+    padding: 34px 24px 24px 32px;
+  }
+}
