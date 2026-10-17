@@ -43,6 +43,7 @@ Put the block in a section with **Section Metadata → Style: light** to get the
 
 ## Sample
 
-`drafts/quick-links-hero.plain.html` (images in `drafts/media/`). Locally:
-`npx -y @adobe/aem-cli up --html-folder drafts`, then open
-`http://localhost:3000/drafts/quick-links-hero`.
+The sample page lives in da.live: `https://da.live/edit#/bkandala/blockmaster/drafts/quick-links-hero`
+(images in `drafts/media/`). Preview it at
+`https://main--blockmaster--bkandala.aem.page/drafts/quick-links-hero`, or locally with
+`npx -y @adobe/aem-cli up` and `http://localhost:3000/drafts/quick-links-hero`.
